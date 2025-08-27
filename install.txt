@@ -1,0 +1,6 @@
+# list of things to install
+cmake new version
+tbb library
+yaml cpp
+nlson yaml 
+# the sdks for each sensor

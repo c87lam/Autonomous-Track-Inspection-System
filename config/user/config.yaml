@@ -1,0 +1,51 @@
+# Configuration for sensor extraction
+general:
+  log_folder: log # default to ssd location
+  storage_folder: data # default to ssd location
+  min_speed_for_start: 0.5
+  data_batch_time: 60s # how we group data [Does not apply to camera]
+
+sensors:
+  camera:
+    refresh_delay: 100ms # ms
+    buffer_delay: 1000ms # ms
+    force_save: 1s # allowed time before forcing an image save
+    num_buffer_per_camera: 10 # allows to hold subsequent frames [negative means no buffer]
+    exposure_time: 1000us # negative means automatically estimates exposure (microseconds)
+    refresh_trial: 4 # number of times to attempt getting the image from camera
+    gain: 30 # camera gain for each
+
+    # Default: 1440 x 1080
+    acqusition_image_height: 1080
+    acqusition_image_width: 1440
+
+    size_compression: 0.5 # percentage off default acqusition image.
+    img_type: png # png or jpeg
+    quality_ratio: 5 # how much to compress 1-10
+    overlap_ratio: 0.7 # Allowed overlap between images [0.4 - 1.0]. make 1.0 to ignore overlap
+
+  thermometer:
+    sampling_rate: 0.5s # seconds
+    port_number: [ 1, 2 ] # connected port from [1 -> N]
+    baud_rate: 115200 # per manual
+
+  ins:
+    device_url: [ "INS_PORT" ] # placeholder
+    frequency: 200 # hz
+    timeout: 100ms
+
+  lidar:
+    ips: [ "IP_LIDAR_1", "IP_LIDAR_2" ] # placeholders
+    ports: [ "PORT1", "PORT2" ]         # placeholders
+    expected_guage: 1.452 # expected track width in meters
+    expected_height_deviation: 0.000 # expected height deviation.
+
+  gpr:
+    ips: [ "IP_GPR" ]        # placeholder
+    ports: [ "PORT_GPR" ]    # placeholder
+    points_per_trace: 250
+    time_sampling_interval: 200ms
+    points_stacks: 4
+    period_s: 0.00294s
+    first_break_point: 0
+    output_batch: 100
